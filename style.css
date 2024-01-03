@@ -1,0 +1,14 @@
+body{
+    height: 100%;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-image: linear-gradient(rgb(34, 212, 215), rgb(65, 50, 180));
+   
+}
+#login-form{
+    
+    background-color: lightgray;
+    border: solid 1px gray;
+    padding: 8px;
+    border-radius: 8px;
+}
