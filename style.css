@@ -2,13 +2,37 @@ body{
     height: 100%;
     background-attachment: fixed;
     background-repeat: no-repeat;
-    background-image: linear-gradient(rgb(34, 212, 215), rgb(65, 50, 180));
-   
+    background-image: linear-gradient(rgb(131, 159, 160), rgb(64, 57, 117));
+}
+#title{
+    margin-top: 30px;
+    margin-bottom: 30px;
+    font-size: 55px;
+}
+#login-interface{
+    margin-top: auto;
+    margin-bottom: auto;
 }
 #login-form{
-    
+    padding-bottom: 30px;
+    width: 37%;
     background-color: lightgray;
-    border: solid 1px gray;
+    border: solid 3px gray;
+    box-shadow: 5px 5px 5px 5px;
     padding: 8px;
-    border-radius: 8px;
+    border-radius: 10px;
+}
+.form-input{
+    margin-bottom: 7px;
+}
+#login-inputs{
+    margin: auto;
+    width: 65%;
+}
+#button-group{
+    margin: auto;
+    width: 65%;
+}
+.button{
+    width: 50%;
 }
