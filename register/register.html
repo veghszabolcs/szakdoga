@@ -44,7 +44,7 @@
                     </div>
                     <input type="password" id="loginPassword" class="form-control form-input">
                 </div>
-                <div class="form-outline mb-4">
+                <div class="form-outline mb-3">
                     <div class="d-flex justify-content-between">
                         <label for="loginPassword" class="mr-auto input-label">Jelszó mégegyszer:</label>
                         <div>
@@ -53,9 +53,15 @@
                     </div>
                     <input type="password" id="loginPasswordSecond" class="form-control form-input">
                 </div>
+                <div>
+                    <p id="emailError">Adjon megy egy érvényes email címet!</p>
+                    <p id="passwordLengthError">A jelszónak legalább 7 karakterből kell állnia!</p>
+                    <p id="passwordCharacterError">A jelszónak tartalmaznia kell legalább egy nagybetűt és egy számot!</p>
+                </div>
             </div>
+            
             <div id="button-group" class="d-flex">
-                <input type="button" value="Regisztráció" class="button" id="login-button">
+                <input type="button" value="Regisztráció" class="button" id="register-button" onclick="validation()">
             </div>
         </form>
     </div>

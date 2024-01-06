@@ -41,6 +41,18 @@ body{
     margin-bottom: 20px;
     width: 65%;
 }
+#emailError{
+    color: red;
+    display: none;
+}
+#passwordLengthError{
+    color: red;
+    display: none;
+}
+#passwordCharacterError{
+    color: red;
+    display: none;
+}
 #login-button{
     width: 100%;
 }
