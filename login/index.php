@@ -34,7 +34,7 @@
             </div>
             <div id="button-group" class="d-flex">
                 <input type="button" value="Bejelentkezés" class="button" id="login-button">
-                <a href="../register/register.html"><input type="button" value="Regisztráció" id="register-button" class="button"></a>
+                <a href="../register/register.php"><input type="button" value="Regisztráció" id="register-button" class="button"></a>
             </div>
         </form>
     </div>

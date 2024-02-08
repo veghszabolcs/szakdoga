@@ -49,6 +49,10 @@ body{
     color: red;
     display: none;
 }
+#passwordIdenticalError{
+    color: red;
+    display: none;
+}
 #passwordCharacterError{
     color: red;
     display: none;
