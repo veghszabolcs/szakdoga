@@ -35,6 +35,10 @@ body{
     margin-bottom: 20px;
     width: 65%;
 }
+#loginError{
+    display: none;
+    color: red;
+}
 #login-button{
     width: 100%;
 }

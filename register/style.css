@@ -57,6 +57,10 @@ body{
     color: red;
     display: none;
 }
+#userAlreadyExistsError{
+    color: red;
+    display: none;
+}
 #login-button{
     width: 100%;
 }

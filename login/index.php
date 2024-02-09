@@ -31,9 +31,12 @@
                     </div>
                     <input type="password" id="loginPassword" class="form-control form-input">
                 </div>
+                <div>
+                    <p id="loginError">Nem megfelelő email vagy jelszó!</p>
+                </div>
             </div>
             <div id="button-group" class="d-flex">
-                <input type="button" value="Bejelentkezés" class="button" id="login-button">
+                <input type="button" value="Bejelentkezés" class="button" id="login-button" onclick="credentialsCheck()">
                 <a href="../register/register.php"><input type="button" value="Regisztráció" id="register-button" class="button"></a>
             </div>
         </form>

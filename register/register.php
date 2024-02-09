@@ -63,6 +63,7 @@
                         <p id="passwordCharacterError">A jelszónak tartalmaznia kell legalább egy nagybetűt és egy
                             számot!</p>
                         <p id="passwordIdenticalError">A jelszavak nem egyeznek!</p>
+                        <p id="userAlreadyExistsError">Ezzel az email címmel már van regisztrált felhasználó!</p>
                     </div>
                 </div>
 

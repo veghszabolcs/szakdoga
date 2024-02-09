@@ -42,24 +42,58 @@ function validation() {
     } else {
         document.getElementById("passwordIdenticalError").style.display = "none";
     }
+
+    userAlreadyExists(function (exists) {
+        if (!exists) {
+            document.getElementById("userAlreadyExistsError").style.display = "block";
+        } else {
+            document.getElementById("userAlreadyExistsError").style.display = "none";
+            var email = document.getElementById("loginEmail").value;
+            var password = document.getElementById("loginPassword").value;
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "upload.php", true);
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                    if (xhr.status === 200) {
+                        alert(xhr.responseText);
+                    } else {
+                        alert('Error: ' + xhr.statusText);
+                    }
+                }
+            };
+            var formData = "email=" + encodeURIComponent(email) + "&password=" + encodeURIComponent(password);
+            console.log(formData);
+            xhr.send(formData);
+        }
+    });
+
+    // Return false by default
+    return false;
+}
+
+function userAlreadyExists(callback) {
     var email = document.getElementById("loginEmail").value;
-    var password = document.getElementById("loginPassword").value;
     var xhr = new XMLHttpRequest();
-    xhr.open("POST", "upload.php", true);
-    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhr.open('POST', 'checkEmail.php', true);
+    xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
     xhr.onreadystatechange = function () {
         if (xhr.readyState === XMLHttpRequest.DONE) {
             if (xhr.status === 200) {
-                alert(xhr.responseText); // Response from server
+                if (xhr.responseText === "notexist") {
+                    console.log("true");
+                    callback(true);
+                } else {
+                    console.log("false");
+                    callback(false);
+                }
             } else {
-                alert('Error: ' + xhr.statusText);
+                console.error('Request failed: ' + xhr.status);
+                callback(false);
             }
         }
     };
-    var formData = "email="+encodeURIComponent(email)+"&password="+encodeURIComponent(password);
-    console.log(formData);
-    xhr.send(formData);
-
+    xhr.send('email=' + encodeURIComponent(email));
 }
 
 function passwordIdenticalCheck() {
@@ -88,7 +122,7 @@ function passwordCheckLength() {
     var firstPw = document.getElementById("loginPassword").value;
     var secondPw = document.getElementById("loginPasswordSecond").value;
 
-    if ((firstPw.length < 7 || secondPw.length < 7)||(firstPw.length>16 || secondPw.length>16)) {
+    if ((firstPw.length < 7 || secondPw.length < 7) || (firstPw.length > 16 || secondPw.length > 16)) {
         return false;
     }
 
