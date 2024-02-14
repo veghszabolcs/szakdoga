@@ -68,7 +68,6 @@ function validation() {
         }
     });
 
-    // Return false by default
     return false;
 }
 

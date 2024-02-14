@@ -12,7 +12,9 @@ function credentialsCheck() {
         if (!exists) {
             document.getElementById("loginError").style.display = "block";
         } else {
-            window.location.replace("../homepage/homepage.php");
+            var redirectSite = "../homepage/homepage.php?loginEmail="+encodeURIComponent(document.getElementById('loginEmail').value);
+            console.log(redirectSite);
+            window.location.replace(redirectSite);
         }
     });
 }

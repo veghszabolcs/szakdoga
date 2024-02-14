@@ -15,7 +15,7 @@
     <h1 id="title" class="text-center">Árajánlat készítő weboldal</h1>
     <div id="login-interface" class="w-100 d-flex p-2 justify-content-center">
 
-        <form action="" id="login-form" class="">
+        <form action="post" id="login-form" class="">
             <h2 class="text-center align-self-center">Bejelentkezés</h2>
             <div id="login-inputs" class="">
                 <div class="justify-content-center">
