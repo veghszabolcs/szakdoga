@@ -20,14 +20,21 @@
             </div>
 
             <div class="d-flex align-items-center justify-content-center">
-                <?php echo $_GET['loginEmail'];?>
+                <?php 
+                session_start();
+                if(isset($_SESSION['email'])) {
+                    echo $_SESSION['email'];
+                } else {
+                    header("Location: ../login/index.php");
+                }
+                ?>
                 <a class="btn btn-primary edit-profile-button" href="#" role="button">Profil szerkesztése</a>
             </div>
         </div>
     </nav>
 
     <div id="content-container">
-
+        
     </div>
 </body>
 </html>

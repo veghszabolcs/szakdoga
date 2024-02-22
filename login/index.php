@@ -15,12 +15,12 @@
     <h1 id="title" class="text-center">Árajánlat készítő weboldal</h1>
     <div id="login-interface" class="w-100 d-flex p-2 justify-content-center">
 
-        <form action="post" id="login-form" class="">
+        <form action="loginCheck.php" id="login-form" method="post">
             <h2 class="text-center align-self-center">Bejelentkezés</h2>
             <div id="login-inputs" class="">
                 <div class="justify-content-center">
                     <label for="loginEmail" class="">Email cím:</label>
-                    <input type="email" id="loginEmail" class="form-control form-input">
+                    <input type="email" name="email" id="loginEmail" class="form-control form-input">
                 </div>
                 <div class="form-outline mb-4">
                     <div class="d-flex justify-content-between">
@@ -29,14 +29,14 @@
                             <input type="checkbox" id="showPasswordBox" onclick="showPassword()">Jelszó megjelenítése
                         </div>
                     </div>
-                    <input type="password" id="loginPassword" class="form-control form-input">
+                    <input type="password" name="password" id="loginPassword" class="form-control form-input">
                 </div>
                 <div>
                     <p id="loginError">Nem megfelelő email vagy jelszó!</p>
                 </div>
             </div>
             <div id="button-group" class="d-flex">
-                <input type="button" value="Bejelentkezés" class="button" id="login-button" onclick="credentialsCheck()">
+                <input type="submit" value="Bejelentkezés" class="button" id="login-button">
                 <a href="../register/register.php"><input type="button" value="Regisztráció" id="register-button" class="button"></a>
             </div>
         </form>

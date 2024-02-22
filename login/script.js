@@ -7,6 +7,7 @@ function showPassword(){
     }
 }
 
+/*
 function credentialsCheck() {
     inputCredentialsExist(function(exists) {
         if (!exists) {
@@ -37,3 +38,4 @@ function inputCredentialsExist(callback) {
     };
     xhr.send('email=' + encodeURIComponent(email) + '&password=' + encodeURIComponent(password));
 }
+*/
