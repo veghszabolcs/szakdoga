@@ -36,7 +36,7 @@ body{
     width: 65%;
 }
 #loginError{
-    display: none;
+    display: block;
     color: red;
 }
 #login-button{

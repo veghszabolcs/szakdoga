@@ -6,8 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Árajánlat készítő</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
 
 <body>
@@ -32,7 +31,11 @@
                     <input type="password" name="password" id="loginPassword" class="form-control form-input">
                 </div>
                 <div>
-                    <p id="loginError">Nem megfelelő email vagy jelszó!</p>
+                    <?php
+                    if (isset($_GET['error'])) {
+                        echo "<p id='loginError'>Helytelen email vagy jelszó!</p>";
+                    }
+                    ?>
                 </div>
             </div>
             <div id="button-group" class="d-flex">
