@@ -35,6 +35,9 @@
                     if (isset($_GET['error'])) {
                         echo "<p id='loginError'>Helytelen email vagy jelszó!</p>";
                     }
+                    if (isset($_GET['msg'])){
+                        echo "<p id='registerSuccess'>Sikeres regisztráció!</p>";
+                    }
                     ?>
                 </div>
             </div>

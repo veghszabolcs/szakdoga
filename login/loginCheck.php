@@ -14,7 +14,7 @@ if ($result->num_rows > 0) {
     if (password_verify($password, $row['password'])) {
         session_start();
         $_SESSION['email'] = $email;
-        header("Location: ../homepage/homepage.php");
+        header("Location: ../homepage/homepage.php?page=arajanlat_keszites");
         exit;
     } else {
         header("Location: index.php?error=a");

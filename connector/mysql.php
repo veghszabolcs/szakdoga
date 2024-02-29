@@ -4,7 +4,7 @@ class DataBase
 {
 
   private $servername = "localhost";
-  private $username = "user";
+  private $username = "teszt";
   private $password = "XjOUympY-[MS19KT";
   private $db = "szakdoga";
   public static $conn;

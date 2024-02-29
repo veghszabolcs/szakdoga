@@ -38,6 +38,12 @@ body{
 #loginError{
     display: block;
     color: red;
+    text-align: center;
+}
+#registerSuccess{
+    display: block;
+    color: green;
+    text-align: center;
 }
 #login-button{
     width: 100%;

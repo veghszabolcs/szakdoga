@@ -14,11 +14,11 @@
     <nav class="navbar navbar-expand-lg navbar-light navbar-custom">
         <div class="container-fluid">
 
-            <a class="navbar-brand" href="#">Árajánlat készítő</a>
+            <a class="navbar-brand" href="?page=arajanlat_keszites">Árajánlat készítő</a>
 
             <div class="navbar-nav me-auto">
-                <a class="nav-link active" aria-current="page" href="#">Aktív árajánlatok megtekintése</a>
-                <a class="nav-link" href="#">Árajánlat előzmények megtekintése</a>
+                <a class="nav-link active" aria-current="page" href="?page=arajanlat_aktiv">Aktív árajánlatok megtekintése</a>
+                <a class="nav-link" href="?page=arajanlat_elozmeny">Árajánlat előzmények megtekintése</a>
             </div>
 
             <div class="d-flex align-items-center justify-content-center">
@@ -41,6 +41,9 @@
             if(isset($_GET['page'])){
                 if($_GET['page']=='edit_profile'){
                     include '../editProfile/editProfile.php';
+                }
+                if($_GET['page']=='arajanlat_keszites'){
+                    include '../arajanlat_page/arajanlat.php';
                 }
             }
         ?>

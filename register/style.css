@@ -43,23 +43,23 @@ body{
 }
 #emailError{
     color: red;
-    display: none;
+    display: block;
 }
 #passwordLengthError{
     color: red;
-    display: none;
+    display: block;
 }
 #passwordIdenticalError{
     color: red;
-    display: none;
+    display: block;
 }
 #passwordCharacterError{
     color: red;
-    display: none;
+    display: block;
 }
 #userAlreadyExistsError{
     color: red;
-    display: none;
+    display: block;
 }
 #login-button{
     width: 100%;

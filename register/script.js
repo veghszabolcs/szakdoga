@@ -67,7 +67,6 @@ function validation() {
             xhr.send(formData);
         }
     });
-
     return false;
 }
 
