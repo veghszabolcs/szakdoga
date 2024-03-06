@@ -1,19 +1,61 @@
-body{
+body {
     height: 100%;
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-image: linear-gradient(rgb(131, 159, 160), rgb(64, 57, 117));
 }
-#title{
+
+#title {
     margin-top: 30px;
     margin-bottom: 30px;
     font-size: 55px;
 }
-#login-interface{
+
+#login-interface {
     margin-top: auto;
     margin-bottom: auto;
 }
-#login-form{
+
+#togglePassword {
+    right: 0; /* Adjusted right value */
+    top: 0;
+    cursor: pointer;
+    z-index: 1; /* Ensure it's above the password input */
+}
+
+.fa-eye-slash {
+    opacity: 1; /* Make it fully opaque */
+    position: relative; /* Ensure it's positioned properly */
+}
+
+a.btn-secondary {
+    width: auto;
+}
+
+@keyframes blink {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.2);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+#togglePassword.blink {
+    animation: blink 0.3s linear;
+}
+
+.fa-eye,
+.fa-eye-slash {
+    transition: all 0.3s ease-in-out;
+}
+
+#login-form {
     padding-bottom: 30px;
     width: 37%;
     background-color: lightgray;
@@ -22,39 +64,64 @@ body{
     padding: 8px;
     border-radius: 10px;
 }
-.form-input{
+
+@media (max-width: 768px) {
+    #login-form {
+        width: 70%;
+    }
+}
+
+@media (max-width: 480px) {
+    #login-form {
+        width: 90%;
+    }
+}
+
+.form-input {
     margin-bottom: 7px;
 }
-#login-inputs{
+
+#login-inputs {
     margin: auto;
     width: 65%;
 }
-#button-group{
+
+#button-group {
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 20px;
     width: 65%;
 }
-#loginError{
+
+#loginError {
     display: block;
     color: red;
     text-align: center;
 }
-#registerSuccess{
+
+#registerSuccess {
     display: block;
     color: green;
     text-align: center;
 }
-#login-button{
-    width: 100%;
-}
-#register-button{
-    width: 100%;
-}
-#showPasswordBox{
-    margin-right: 5px;
-}
-a{
+
+#login-button {
     width: 100%;
 }
 
+#register-button {
+    width: 100%;
+}
+
+#showPasswordBox {
+    margin-right: 5px;
+}
+
+a.btn-secondary { /* Updated CSS for secondary button */
+    margin-left:0px;
+    width: auto;
+}
+
+a {
+    width: 100%;
+}

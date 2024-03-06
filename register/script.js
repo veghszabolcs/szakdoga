@@ -1,21 +1,44 @@
 
-function showPassword() {
-    var pw = document.getElementById("loginPassword");
-    if (pw.type === "password") {
-        pw.type = "text";
-    } else {
-        pw.type = "password";
-    }
-}
+document.addEventListener('DOMContentLoaded', function () {
+    const togglePasswordFirst = document.querySelector('#togglePasswordFirst');
+    const togglePasswordSecond = document.querySelector('#togglePasswordSecond');
+    const passwordFirst = document.querySelector('#loginPassword');
+    const passwordSecond = document.querySelector('#loginPasswordSecond');
 
-function showPasswordSecond() {
-    var pw = document.getElementById("loginPasswordSecond");
-    if (pw.type === "password") {
-        pw.type = "text";
-    } else {
-        pw.type = "password";
-    }
-}
+    togglePasswordFirst.addEventListener('click', function () {
+        const type = passwordFirst.getAttribute('type') === 'password' ? 'text' : 'password';
+        passwordFirst.setAttribute('type', type);
+
+        // Toggle eye icons
+        if (type === 'password') {
+            togglePasswordFirst.innerHTML = '<i class="fas fa-eye"></i>';
+        } else {
+            togglePasswordFirst.innerHTML = '<i class="fas fa-eye-slash"></i>';
+        }
+        togglePasswordFirst.classList.add('blink'); // Apply animation class
+        setTimeout(function () {
+            togglePasswordFirst.classList.remove('blink'); // Remove animation class after 0.3s
+        }, 300);
+    });
+
+    togglePasswordSecond.addEventListener('click', function () {
+        const type = passwordSecond.getAttribute('type') === 'password' ? 'text' : 'password';
+        passwordSecond.setAttribute('type', type);
+
+        // Toggle eye icons
+        if (type === 'password') {
+            togglePasswordSecond.innerHTML = '<i class="fas fa-eye"></i>';
+        } else {
+            togglePasswordSecond.innerHTML = '<i class="fas fa-eye-slash"></i>';
+        }
+        togglePasswordSecond.classList.add('blink'); // Apply animation class
+        setTimeout(function () {
+            togglePasswordSecond.classList.remove('blink'); // Remove animation class after 0.3s
+        }, 300);
+    });
+});
+
+
 
 function validation() {
     if (!emailCheck()) {

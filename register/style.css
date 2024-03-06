@@ -1,22 +1,26 @@
-body{
+body {
     height: 100%;
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-image: linear-gradient(rgb(131, 159, 160), rgb(64, 57, 117));
 }
-#title{
+
+#title {
     margin-top: 30px;
     margin-bottom: 30px;
     font-size: 55px;
 }
-#register-title{
+
+#register-title {
     width: 60%;
 }
-#login-interface{
+
+#login-interface {
     margin-top: auto;
     margin-bottom: auto;
 }
-#login-form{
+
+#login-form {
     padding-bottom: 30px;
     width: 37%;
     background-color: lightgray;
@@ -25,53 +29,121 @@ body{
     padding: 8px;
     border-radius: 10px;
 }
-.form-input{
+
+.fa-eye-slash {
+    display: none;
+}
+
+@keyframes blink {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.2);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+#togglePasswordFirst.blink,
+#togglePasswordSecond.blink {
+    animation: blink 0.3s linear;
+}
+
+.fa-eye,
+.fa-eye-slash {
+    transition: all 0.3s ease-in-out;
+}
+
+@media (max-width: 768px) {
+    #login-form {
+        width: 70%;
+    }
+}
+
+@media (max-width: 480px) {
+    #login-form {
+        width: 90%;
+    }
+}
+
+.form-input {
+    border: 2px solid #bac4ce;
+    border-radius: 1rem;
     margin-bottom: 7px;
 }
-.showPasswordBox{
+
+.showPasswordBox {
     margin-right: 5px;
 }
-#login-inputs{
+
+#login-inputs {
     margin: auto;
     width: 65%;
 }
-#button-group{
+
+#button-group {
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 20px;
     width: 65%;
 }
-#emailError{
-    color: red;
-    display: block;
-}
-#passwordLengthError{
-    color: red;
-    display: block;
-}
-#passwordIdenticalError{
-    color: red;
-    display: block;
-}
-#passwordCharacterError{
-    color: red;
-    display: block;
-}
-#userAlreadyExistsError{
-    color: red;
-    display: block;
-}
-#login-button{
-    width: 100%;
-}
-#register-button{
-    width: 100%;
-}
-#back{
-    width: 20%;
-}
-#filler{
+
+#back,
+#filler {
     width: 20%;
 }
 
+#formTitle {
+    width: 60%;
+}
 
+i {
+    right: 10px;
+    top: 35px;
+    cursor: pointer;
+}
+
+#emailError {
+    color: red;
+    display: block;
+}
+
+#passwordLengthError {
+    color: red;
+    display: block;
+}
+
+#passwordIdenticalError {
+    color: red;
+    display: block;
+}
+
+#passwordCharacterError {
+    color: red;
+    display: block;
+}
+
+#userAlreadyExistsError {
+    color: red;
+    display: block;
+}
+
+#login-button {
+    width: 100%;
+}
+
+#register-button {
+    width: 100%;
+}
+
+#back {
+    width: 20%;
+}
+
+#filler {
+    width: 20%;
+}

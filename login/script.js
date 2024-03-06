@@ -1,11 +1,34 @@
-function showPassword(){
+function showPassword() {
     var pw = document.getElementById("loginPassword");
-    if(pw.type === "password"){
+    if (pw.type === "password") {
         pw.type = "text";
-    }else{
+    } else {
         pw.type = "password";
     }
 }
+
+document.addEventListener('DOMContentLoaded', function () {
+    const togglePassword = document.querySelector('#togglePassword');
+    const passwordInput = document.querySelector('#loginPassword');
+
+    togglePassword.addEventListener('click', function () {
+        const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+        passwordInput.setAttribute('type', type);
+
+        // Toggle eye icons
+        if (type === 'password') {
+            togglePassword.innerHTML = '<i class="fas fa-eye"></i>';
+        } else {
+            togglePassword.innerHTML = '<i class="fas fa-eye-slash"></i>';
+        }
+
+        // Apply animation class
+        togglePassword.classList.add('blink');
+        setTimeout(function () {
+            togglePassword.classList.remove('blink'); // Remove animation class after 0.3s
+        }, 300);
+    });
+});
 
 /*
 function credentialsCheck() {

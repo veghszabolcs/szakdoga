@@ -1,12 +1,27 @@
-#left-side{
-    display: inline-block;
-    width: 30%;
-}
-#right-side{
-    display: inline-block;
-    width: 70%;
-}
-.content{
-    display: flex;
+.input-group {
     width: 100%;
+    margin-bottom: 20px;
 }
+
+.input-group .input-group-text {
+    width: 120px;
+    background-color: #007bff;
+    color: #fff;
+    border-color: #007bff;
+}
+
+.input-group .form-control {
+    flex: 1;
+}
+
+.form-control:focus {
+    box-shadow: none;
+}
+
+/* Optional: Adjust padding and margins as per your preference */
+.container {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Optional: Center align the form */
