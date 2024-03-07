@@ -42,7 +42,7 @@ body{
 }
 
 .popup {
-    background-color: #198754;
+    background-color: #609966;
     color: white;
     font-size: x-large;
     font-stretch: 150%;
@@ -57,7 +57,7 @@ body{
     border: 2px solid gray;
     border-radius: 8px;
     box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5);
-    display: block; /* Hide initially */
+    display: block; 
 }
 
 .input-group .form-control {
