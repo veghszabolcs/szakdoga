@@ -18,10 +18,33 @@
     box-shadow: none;
 }
 
-/* Optional: Adjust padding and margins as per your preference */
 .container {
     padding-left: 15px;
     padding-right: 15px;
 }
 
-/* Optional: Center align the form */
+.error-message {
+    display: none;
+    color: red;
+}
+
+.custom-select {
+    color: #595c5f;
+}
+
+.custom-select:focus {
+    color: #595c5f;
+}
+
+#submit {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#submit:hover {
+    background-color: #0056b3;
+}
