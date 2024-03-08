@@ -47,13 +47,13 @@ if ($db::$conn->query($sqlUserUpdate) !== TRUE) {
             if ($kategoria < 1) {
                 $sqlCegInsert = "UPDATE `ceg` SET `telepules_id` = $telepulesId, `nev` = '$cegNev', `szekhely` = '$szekhely', `adoszam` = $adoszam WHERE `user_id` = $user_id";
             } else {
-                $sqlCegInsert = "UPDATE `ceg` SET `telepules_id` = $telepulesId, `nev` = '$cegNev', `szekhely` = '$szekhely', `kategoria` = " . ($kategoria) . ", `adoszam` = $adoszam WHERE `user_id` = $user_id";
+                $sqlCegInsert = "UPDATE `ceg` SET `telepules_id` = $telepulesId, `nev` = '$cegNev', `szekhely` = '$szekhely', `kategoria_id` = " . ($kategoria) . ", `adoszam` = $adoszam WHERE `user_id` = $user_id";
             }
         } else {
             if ($kategoria < 1) {
                 $sqlCegInsert = "INSERT INTO `ceg` (`telepules_id`, `nev`, `szekhely`, `adoszam`, `user_id`) VALUES ($telepulesId, '$cegNev', '$szekhely', $adoszam, $user_id)";
             } else {
-                $sqlCegInsert = "INSERT INTO `ceg` (`telepules_id`, `nev`, `szekhely`, `kategoria`, `adoszam`, `user_id`) VALUES ($telepulesId, '$cegNev', '$szekhely', " . ($kategoria) . ", $adoszam, $user_id)";
+                $sqlCegInsert = "INSERT INTO `ceg` (`telepules_id`, `nev`, `szekhely`, `kategoria_id`, `adoszam`, `user_id`) VALUES ($telepulesId, '$cegNev', '$szekhely', " . ($kategoria) . ", $adoszam, $user_id)";
             }
         }
 

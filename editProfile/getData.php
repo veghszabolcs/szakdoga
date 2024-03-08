@@ -36,7 +36,7 @@ if ($resultCeg->num_rows > 0) {
             $irsz = $rowTelepules['irsz'];
         }
         $szekhely = $row["szekhely"];
-        $kategoria = $row["kategoria"];
+        $kategoria = $row["kategoria_id"];
         $adoszam = $row["adoszam"];
         $cegExists = true;
     }
@@ -49,9 +49,9 @@ $sqlKategoria = 'SELECT * FROM `kategoria`;';
 $resultKategoria = $db::$conn->query($sqlKategoria);
 
 //kategoria query
-$sqlSelectedKategoria = "SELECT `kategoria` FROM `ceg` WHERE `user_id` = $userId";
+$sqlSelectedKategoria = "SELECT `kategoria_id` FROM `ceg` WHERE `user_id` = $userId";
 $resultSelectedKategoria = $db::$conn->query($sqlSelectedKategoria);
 if ($resultSelectedKategoria->num_rows > 0) {
     $rowKategoria = $resultSelectedKategoria->fetch_assoc();
-    $selectedKategoria = $rowKategoria['kategoria'];
+    $selectedKategoria = $rowKategoria['kategoria_id'];
 }
