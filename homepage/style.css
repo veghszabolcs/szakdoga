@@ -1,7 +1,17 @@
-.btn{
+.btn-nav{
     margin-left: 5px;
     background-color: #007FFF;
 }
 nav{
     background-color: #dedbdb;
+}
+
+.black-btn {
+    background-color: #555555;
+    color: white;
+}
+
+.black-btn:hover {
+    background-color: #323232;
+    color: white;
 }

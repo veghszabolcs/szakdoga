@@ -30,8 +30,8 @@
                     header("Location: ../login/index.php");
                 }
                 ?>
-                <a class="btn btn-primary edit-profile-button" href="?page=edit_profile" role="button">Profil szerkesztése</a>
-                <a class="btn btn-primary edit-profile-button" href="logout.php" role="button">Kijelentkezés</a>
+                <a class="btn-nav btn edit-profile-button black-btn" href="?page=edit_profile" role="button">Profil szerkesztése</a>
+                <a class="btn-nav btn edit-profile-button black-btn" href="logout.php" role="button">Kijelentkezés</a>
             </div>
         </div>
     </nav>
@@ -44,6 +44,9 @@
                 }
                 if($_GET['page']=='arajanlat_keszites'){
                     include '../arajanlat_page/arajanlat.php';
+                }
+                if($_GET['page']=='arajanlat_aktiv'){
+                    include '../active_history/active_history.php';
                 }
             }
         ?>
