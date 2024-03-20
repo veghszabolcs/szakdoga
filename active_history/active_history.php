@@ -14,9 +14,13 @@ require_once "../connector/mysql.php";
 
 <body>
   <div class="container history-section">
-    <div class="container">
-      <button onclick="toggleItems('sent')">Küldött</button>
-      <button onclick="toggleItems('received')">Érkező</button>
+    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+      <label class="btn btn-secondary active">
+        <input type="radio" name="options" id="option1" autocomplete="off" checked> Active
+      </label>
+      <label class="btn btn-secondary">
+        <input type="radio" name="options" id="option2" autocomplete="off"> Radio
+      </label>
     </div>
     <?php
 
@@ -28,7 +32,13 @@ require_once "../connector/mysql.php";
         $rowCegNev = $resultCegNev->fetch_assoc();
         $cegNev = $rowCegNev['nev'];
 
-        echo '<div class="row">' .
+        echo '<div class="row ';
+        if ($row['kuldo_id'] === $_SESSION['user_id']) {
+          echo "sent";
+        } else {
+          echo "received";
+        }
+        echo '">' .
           '<p id="' . $row['arajanlat_id'] . '" class="hidden">' . $row['arajanlat_id'] . '</p>' .
           '<div class="col-md-4">' .
           '<div class="history-item">' .
@@ -54,11 +64,6 @@ require_once "../connector/mysql.php";
     }
 
     ?>
-  </div>
-
-
-  <div class="container">
-
   </div>
 
 </body>
