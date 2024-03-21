@@ -10,12 +10,26 @@
     border-radius: 5px;
 }
 
-.hidden{
+.sent{
+    display: none;
+}
+
+#radio-buttons {
+    margin-bottom: 15px;
+}
+
+.hidden {
     display: none;
 }
 
 .history-item h3 {
     margin-top: 0;
+}
+
+.no-change{
+    margin-bottom: 0px;
+    margin-top: 10px;
+    text-align: center;
 }
 
 .no-events {
@@ -33,25 +47,25 @@
     color: white;
 }
 
-#first{
+#first {
     border-top-right-radius: 0px;
     border-bottom-left-radius: 0px;
     border-bottom-right-radius: 0px;
 }
 
-#second{
+#second {
     border-top-left-radius: 0px;
     border-bottom-left-radius: 0px;
     border-bottom-right-radius: 0px;
 }
 
-#third{
+#third {
     border-top-right-radius: 0px;
     border-top-left-radius: 0px;
     border-bottom-right-radius: 0px;
 }
 
-#fourth{
+#fourth {
     border-top-right-radius: 0px;
     border-top-left-radius: 0px;
     border-bottom-left-radius: 0px;

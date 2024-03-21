@@ -9,15 +9,14 @@ document.addEventListener('DOMContentLoaded', function () {
         const type = passwordFirst.getAttribute('type') === 'password' ? 'text' : 'password';
         passwordFirst.setAttribute('type', type);
 
-        // Toggle eye icons
         if (type === 'password') {
             togglePasswordFirst.innerHTML = '<i class="fas fa-eye"></i>';
         } else {
             togglePasswordFirst.innerHTML = '<i class="fas fa-eye-slash"></i>';
         }
-        togglePasswordFirst.classList.add('blink'); // Apply animation class
+        togglePasswordFirst.classList.add('blink');
         setTimeout(function () {
-            togglePasswordFirst.classList.remove('blink'); // Remove animation class after 0.3s
+            togglePasswordFirst.classList.remove('blink'); 
         }, 300);
     });
 
@@ -25,15 +24,14 @@ document.addEventListener('DOMContentLoaded', function () {
         const type = passwordSecond.getAttribute('type') === 'password' ? 'text' : 'password';
         passwordSecond.setAttribute('type', type);
 
-        // Toggle eye icons
         if (type === 'password') {
             togglePasswordSecond.innerHTML = '<i class="fas fa-eye"></i>';
         } else {
             togglePasswordSecond.innerHTML = '<i class="fas fa-eye-slash"></i>';
         }
-        togglePasswordSecond.classList.add('blink'); // Apply animation class
+        togglePasswordSecond.classList.add('blink'); 
         setTimeout(function () {
-            togglePasswordSecond.classList.remove('blink'); // Remove animation class after 0.3s
+            togglePasswordSecond.classList.remove('blink'); 
         }, 300);
     });
 });

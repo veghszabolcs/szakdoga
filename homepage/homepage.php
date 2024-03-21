@@ -46,7 +46,7 @@
                     include '../arajanlat_page/arajanlat.php';
                 }
                 if($_GET['page']=='arajanlat_aktiv'){
-                    include '../active_history/active_history.php';
+                    include '../active_history/activeHistory.php';
                 }
             }
         ?>

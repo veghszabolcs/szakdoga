@@ -3,20 +3,21 @@
 require_once "../connector/mysql.php";
 
 $db = new DataBase();
-$email = $_SESSION['email'];
 
-$sqlGetUserId = "SELECT * FROM `user` WHERE `email` LIKE '$email';";
-$resultUser = $db::$conn->query($sqlGetUserId);
+$userId = $_SESSION['user_id'];
+$sqlArajanlatReceived = "SELECT * FROM `arajanlat` WHERE `fogado_id` = $userId AND `statusz` IS NULL;";
+$resultArajanlatReceived = $db::$conn->query($sqlArajanlatReceived);
 
-if ($resultUser->num_rows > 0) {
-    while ($row = $resultUser->fetch_assoc()) {
-        $userId = $row["user_id"];
+
+$sqlGetCeg = "SELECT * FROM `ceg` WHERE `user_id` = $userId";
+$resultCeg = $db::$conn->query($sqlGetCeg);
+if ($resultCeg->num_rows > 0) {
+    while ($row = $resultCeg->fetch_assoc()) {
+        $cegId = $row["ceg_id"];
     }
-} else {
-    echo "Hiba";
 }
 
-$sqlArajanlat = "SELECT * FROM `arajanlat` WHERE `fogado_id` = $userId;";
-$resultArajanlat = $db::$conn->query($sqlArajanlat);
+$sqlArajanlatSent = "SELECT * FROM `arajanlat` WHERE `kuldo_id` = $cegId AND `statusz` IS NULL;";
+$resultArajanlatSent = $db::$conn->query($sqlArajanlatSent);
 
 ?>
