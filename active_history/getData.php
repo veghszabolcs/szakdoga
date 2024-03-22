@@ -17,7 +17,7 @@ if ($resultCeg->num_rows > 0) {
     }
     $sqlArajanlatSent = "SELECT * FROM `arajanlat` WHERE `kuldo_id` = $cegId AND `statusz` IS NULL;";
     $resultArajanlatSent = $db::$conn->query($sqlArajanlatSent);
-}else{
+} else {
     $resultArajanlatSent = "";
 }
 

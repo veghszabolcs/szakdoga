@@ -21,6 +21,15 @@
                 <p>fdaa</p>
             </div>
         </div>
+        <form action="../arajanlat_page/pdf.php" method="post">
+            <label for="nev">add meg nev</label>
+            <input type="text" name="nev" id="nev">
+            <label for="ar">add meg ar</label>
+            <input type="number" name="ar" id="ar">
+            <label for="db">add meg db</label>
+            <input type="number" name="db" id="db">
+            <button type="submit">mega send</button>
+        </form>
     </div>
 </body>
 </html>
