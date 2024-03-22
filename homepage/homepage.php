@@ -18,7 +18,7 @@
 
             <div class="navbar-nav me-auto">
                 <a class="nav-link active" aria-current="page" href="?page=arajanlat_aktiv">Aktív árajánlatok megtekintése</a>
-                <a class="nav-link" href="?page=arajanlat_elozmeny">Árajánlat előzmények megtekintése</a>
+                <a class="nav-link" href="?page=archive_history">Árajánlat előzmények megtekintése</a>
             </div>
 
             <div class="d-flex align-items-center justify-content-center">
@@ -47,6 +47,9 @@
                 }
                 if($_GET['page']=='arajanlat_aktiv'){
                     include '../active_history/activeHistory.php';
+                }
+                if($_GET['page']=='archive_history'){
+                    include '../archive_history/archiveHistory.php';
                 }
             }
         ?>
