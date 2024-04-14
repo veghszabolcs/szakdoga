@@ -1,37 +1,97 @@
-#title{
+#title {
     text-align: center;
     font-size: 50px;
     margin-top: 10px;
 }
-#content{
+
+#content {
     margin-left: auto;
     margin-right: auto;
-    width: 1500px;
+    width: 90%;
     border: 1px solid #e5cbba;
     border-radius: 5px;
     background-color: #F6EEE3;
 }
-#head{
+
+h5 {
     text-align: center;
-    height: 150px;
-    width: 100%;
+}
+
+#head {
+    margin-left: auto;
+    margin-right: auto;
+    height: auto;
+    width: 80%;
     display: flex;
 }
-#headFirst{
-    margin-top: auto;
-    margin-bottom: auto;
-    width: 40%;
-    display: inline-block;
+
+#szolgaltatas {
+    margin-left: auto;
+    margin-right: auto;
+    height: auto;
+    width: 80%;
+    display: flex;
 }
-#headSecond{
+
+#szolgaltatasFirst {
+    text-align: left;
     margin-top: auto;
     margin-bottom: auto;
     width: 30%;
     display: inline-block;
 }
-#headThird{
+
+#szolgaltatasSecond {
     margin-top: auto;
     margin-bottom: auto;
-    width: 30%;
+    width: 80%;
+    display: inline-block;   
+}
+
+
+#tetel {
+    margin-left: auto;
+    margin-right: auto;
+    height: auto;
+    width: 80%;
+    display: flex;
+}
+
+#tetelFirst {
+    text-align: left;
+    margin-top: auto;
+    margin-bottom: auto;
+    width: 20%;
+    display: inline-block;
+}
+
+#tetelSecond {
+    margin-top: auto;
+    margin-bottom: auto;
+    width: 80%;
+    display: inline-block;   
+}
+
+.tetelGroup {
+    border-radius: 5px;
+    background-color: #d8cebe;
+    border: 1px solid #ccc;
+    padding: 10px;
+    display: block;
+    margin-bottom: 5px;
+}
+
+#headFirst {
+    text-align: left;
+    margin-top: auto;
+    margin-bottom: auto;
+    width: 20%;
+    display: inline-block;
+}
+
+#headSecond {
+    margin-top: auto;
+    margin-bottom: auto;
+    width: 80%;
     display: inline-block;
 }

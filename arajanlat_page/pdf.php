@@ -1,26 +1,34 @@
 <?php
+require('../fpdf/fpdf.php');
 
-    require_once "../fpdf/fpdf.php";
+// Validate input method and content
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['tetel_nev']) && isset($_POST['meretegyseg']) && isset($_POST['tetel_mennyiseg'])) {
+    // Get and sanitize form data
+    $tetel_nev = array_map('htmlspecialchars', $_POST['tetel_nev']);
+    $meretegyseg = array_map('htmlspecialchars', $_POST['meretegyseg']);
+    $tetel_mennyiseg = array_map('htmlspecialchars', $_POST['tetel_mennyiseg']);
 
-    // Get form inputs
-    $input1 = $_POST['nev'];
-    $input2 = $_POST['ar'];
-    $input3 = $_POST['db'];
-
-    // Create a new PDF instance
+    // Create PDF
     $pdf = new FPDF();
     $pdf->AddPage();
+    $pdf->SetFont('Arial', '', 12);
 
-    // Set font for the PDF
-    $pdf->SetFont('Arial', 'B', 16);
+    // Set UTF-8 encoding and font
+    $pdf->AddFont('DejaVu', '', '../fpdf/font/DejaVuSansCondensed.ttf', true);
+    $pdf->SetFont('DejaVu', '', 12);
 
-    // Add inputs to the PDF
-    $pdf->Cell(0, 10, 'Input 1: ' . $input1, 0, 1);
-    $pdf->Cell(0, 10, 'Input 2: ' . $input2, 0, 1);
-    $pdf->Cell(0, 10, 'Input 3: ' . $input3, 0, 1);
+    // Output form data to PDF
+    for ($i = 0; $i < count($tetel_nev); $i++) {
+        $pdf->Cell(0, 10, 'Tétel neve: ' . $tetel_nev[$i], 0, 1);
+        $pdf->Cell(0, 10, 'Mértékegység: ' . $meretegyseg[$i], 0, 1);
+        $pdf->Cell(0, 10, 'Mennyiség: ' . $tetel_mennyiseg[$i], 0, 1);
+        $pdf->Ln(10); // Add some space between each set of inputs
+    }
 
-    // Output PDF as a file
-    $pdfFilePath = '../arajanlatok/output.pdf';
-    $pdf->Output($pdfFilePath, 'F');
-
+    // Output PDF
+    $pdf->Output();
+} else {
+    // Invalid request
+    echo "Invalid request!";
+}
 ?>

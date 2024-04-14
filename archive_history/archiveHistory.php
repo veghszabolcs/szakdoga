@@ -66,7 +66,7 @@ require_once "../connector/mysql.php";
         }
         if ($empty === true) {
             echo '<div class="no-events received">' .
-                '<p><em>Nincsenek aktív érkezett árajánlatok.</em></p>' .
+                '<p><em>Nincs érkezett árajánlat előzmény.</em></p>' .
                 '</div>';
         }
         $empty = true;
@@ -104,7 +104,7 @@ require_once "../connector/mysql.php";
         }
         if ($empty === true) {
             echo '<div class="no-events sent">' .
-                '<p><em>Nincsenek aktív elküldött árajánlatok.</em></p>' .
+                '<p><em>Nincs elküldött árajánlat előzmény.</em></p>' .
                 '</div>';
         }
 
