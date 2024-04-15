@@ -1,139 +1,99 @@
 <?php
 require_once('../fpdf/fpdf.php');
 
-// FPDF objektum létrehozása
 $pdf = new FPDF();
 $pdf->AddPage();
 
 // Betűtípus és méret beállítása
-$pdf->SetFont('arial', '', 12);
+$pdf->SetFont('arial', 'B', 30);
 
 // Cím
-$pdf->Cell(0, 10, urldecode(em('Árajánlat')), 0, 1, 'C');
+$pdf->Cell(0, 10, es('Árajánlat'), 0, 1, 'C');
+
+$pdf->SetFont('arial', '', 12);
 
 // Ajánlatadó adatai
 $pdf->Ln(10); // Üres sor hozzáadása
-$pdf->Cell(0, 10, urldecode(em('Ajánlatadó:')), 0, 1);
-$pdf->Cell(0, 10, urldecode(em('Cég neve: ')) . urldecode(em($_POST['company']['name'])), 0, 1);
-$pdf->Cell(0, 10, urldecode(em('Cím: ')) . urldecode(em($_POST['company']['address'])), 0, 1);
-$pdf->Cell(0, 10, urldecode(em('Adószám: ')) . urldecode(em($_POST['company']['taxNumber'])), 0, 1);
-$pdf->Cell(0, 10, urldecode(em('Illetékes neve: ')) . urldecode(em($_POST['contact']['name'])), 0, 1);
-$pdf->Cell(0, 10, urldecode(em('Illetékes telefonszáma: ')) . urldecode(em($_POST['contact']['number'])), 0, 1);
+$pdf->Cell(0, 10, es('Ajánlatadó:   Cég neve: ') . es($_POST['company']['name']), 0, 1);
+$pdf->Cell(25);
+$pdf->Cell(0, 10, es('Cím: ') . es($_POST['company']['address']), 0, 1);
+$pdf->Cell(25);
+$pdf->Cell(0, 10, es('Adószám: ') . es($_POST['company']['taxNumber']), 0, 1);
+$pdf->Cell(25);
+$pdf->Cell(0, 10, es('Illetékes neve: ') . es($_POST['contact']['name']), 0, 1);
+$pdf->Cell(25);
+$pdf->Cell(0, 10, es('Illetékes telefonszáma: +36') . es($_POST['contact']['number']), 0, 1);
+
+if (!(isset($_POST['tetel_nev']) && !empty($_POST['tetel_nev'])) && !(isset($_POST['szolgaltatas_nev']) && !empty($_POST['szolgaltatas_nev']))) {
+    header("Location: ../homepage/homepage.php?page=arajanlat_keszites&error=empty");
+}
 
 // Tételek
-if(isset($_POST['tetel_nev']) && !empty($_POST['tetel_nev'])) {
+$sumTetelek = 0;
+if (isset($_POST['tetel_nev']) && !empty($_POST['tetel_nev'])) {
     $pdf->Ln(10); // Üres sor hozzáadása
-    $pdf->Cell(0, 10, urldecode(em('Tételek:')), 0, 1);
+    $pdf->SetFont('arial', 'B', 15);
+    $pdf->Cell(0, 10, es('Tételek:'), 0, 1);
+    $pdf->SetFont('arial', '', 12);
     $tetelek = $_POST['tetel_nev'];
     $mennyisegek = $_POST['tetel_mennyiseg'];
     $darabarak = $_POST['tetel_darabara'];
     $meretegysegek = $_POST['meretegyseg'];
 
     for ($i = 0; $i < count($tetelek); $i++) {
-        $pdf->Cell(0, 10, urldecode(em('Tétel neve: ')) . urldecode(em($tetelek[$i])), 0, 1);
-        $pdf->Cell(0, 10, urldecode(em('Mennyiség: ')) . urldecode(em($mennyisegek[$i] . ' ' . $meretegysegek[$i])), 0, 1);
-        $pdf->Cell(0, 10, urldecode(em('Darabár: ')) . urldecode(em($darabarak[$i])). ' forint', 0, 1);
+        $pdf->Cell(75, 10, es($tetelek[$i]), 'B', 0);
+        $pdf->Cell(75, 10, es($mennyisegek[$i] . ' ' . $meretegysegek[$i]), 'B', 0);
+        $pdf->Cell(0, 10,  es($darabarak[$i]) . ' forint/db',  'B', 1);
+        $sumTetelek += $mennyisegek[$i] * $darabarak[$i];
     }
 }
 
 // Szolgáltatások
-if(isset($_POST['szolgaltatas_nev']) && !empty($_POST['szolgaltatas_nev'])) {
-    $pdf->Ln(10); // Üres sor hozzáadása
-    $pdf->Cell(0, 10, urldecode(em('Szolgáltatások:')), 0, 1);
+$sumSzolgaltatasok = 0;
+if (isset($_POST['szolgaltatas_nev']) && !empty($_POST['szolgaltatas_nev'])) {
+    $pdf->Ln(10); // Add an empty line
+    $pdf->SetFont('arial', 'B', 15);
+    $pdf->Cell(0, 10, es('Szolgáltatások:'), 0, 1); // Title
+    $pdf->SetFont('arial', '', 12);
+
     $szolgaltatasok = $_POST['szolgaltatas_nev'];
+    $idotartamok = $_POST['ido_tartam'];
     $oradijak = $_POST['ora_dij'];
 
+    // Loop through each service
     for ($i = 0; $i < count($szolgaltatasok); $i++) {
-        $pdf->Cell(0, 10, urldecode(em('Szolgáltatás neve: ')) . urldecode(em($szolgaltatasok[$i])), 0, 1);
-        $pdf->Cell(0, 10, urldecode(em('Óradíj: ')) . urldecode(em($oradijak[$i])). ' forint', 0, 1);
+        $pdf->Cell(75, 10, es($szolgaltatasok[$i]), 'B', 0); // Service name
+        $pdf->Cell(75, 10, es($idotartamok[$i] . " óra"), 'B', 0);
+        $pdf->Cell(0, 10, es($oradijak[$i]) . es(' forint/óra'), 'B', 1); // Hourly rate
+        $sumSzolgaltatasok += $idotartamok[$i] * $oradijak[$i];
     }
 }
+$hatarido = $_POST['hatarido'];
+$keszult = $_POST['keszult'];
+$afa = 27;
+$pdf->Ln(10);
+$pdf->Cell(125);
+$pdf->SetFont('arial', 'B', 15);
+$pdf->Cell(25, 10, es('Végösszeg:'), 0, 1);
+$pdf->SetFont('arial', '', 12);
+$pdf->Cell(125);
+$pdf->Cell(25, 10, es("Nettó:"), 0, 0);
+$pdf->Cell(30, 10, number_format($sumTetelek + $sumSzolgaltatasok) . " Ft", 0, 1, "R");
+$pdf->Cell(125, 10,  es("Készült: " . $keszult), 0, 0);
+$pdf->Cell(25, 10, es("Áfa:"), 0, 0);
+$pdf->Cell(30, 10, $afa . "%", 0, 1, "R");
+$pdf->Cell(125, 10, es("Határidő: " . $hatarido, 0, 1));
+$pdf->Cell(25, 10, es("Bruttó:"), 0, 0);
+$pdf->Cell(30, 10, number_format(($sumTetelek + $sumSzolgaltatasok) * (($afa / 100) + 1), 0) . " Ft", 0, 1, "R");
+
+
+
+
 
 // Fájl kimenet
 $pdf->Output();
 
-function em($word) {
-
-    $word = str_replace("@","%40",$word);
-    $word = str_replace("`","%60",$word);
-    $word = str_replace("¢","%A2",$word);
-    $word = str_replace("£","%A3",$word);
-    $word = str_replace("¥","%A5",$word);
-    $word = str_replace("|","%A6",$word);
-    $word = str_replace("«","%AB",$word);
-    $word = str_replace("¬","%AC",$word);
-    $word = str_replace("¯","%AD",$word);
-    $word = str_replace("º","%B0",$word);
-    $word = str_replace("±","%B1",$word);
-    $word = str_replace("ª","%B2",$word);
-    $word = str_replace("µ","%B5",$word);
-    $word = str_replace("»","%BB",$word);
-    $word = str_replace("¼","%BC",$word);
-    $word = str_replace("½","%BD",$word);
-    $word = str_replace("¿","%BF",$word);
-    $word = str_replace("À","%C0",$word);
-    $word = str_replace("Á","%C1",$word);
-    $word = str_replace("Â","%C2",$word);
-    $word = str_replace("Ã","%C3",$word);
-    $word = str_replace("Ä","%C4",$word);
-    $word = str_replace("Å","%C5",$word);
-    $word = str_replace("Æ","%C6",$word);
-    $word = str_replace("Ç","%C7",$word);
-    $word = str_replace("È","%C8",$word);
-    $word = str_replace("É","%C9",$word);
-    $word = str_replace("Ê","%CA",$word);
-    $word = str_replace("Ë","%CB",$word);
-    $word = str_replace("Ì","%CC",$word);
-    $word = str_replace("Í","%CD",$word);
-    $word = str_replace("Î","%CE",$word);
-    $word = str_replace("Ï","%CF",$word);
-    $word = str_replace("Ð","%D0",$word);
-    $word = str_replace("Ñ","%D1",$word);
-    $word = str_replace("Ò","%D2",$word);
-    $word = str_replace("Ó","%D3",$word);
-    $word = str_replace("Ô","%D4",$word);
-    $word = str_replace("Õ","%D5",$word);
-    $word = str_replace("Ö","%D6",$word);
-    $word = str_replace("Ø","%D8",$word);
-    $word = str_replace("Ù","%D9",$word);
-    $word = str_replace("Ú","%DA",$word);
-    $word = str_replace("Û","%DB",$word);
-    $word = str_replace("Ü","%DC",$word);
-    $word = str_replace("Ý","%DD",$word);
-    $word = str_replace("Þ","%DE",$word);
-    $word = str_replace("ß","%DF",$word);
-    $word = str_replace("à","%E0",$word);
-    $word = str_replace("á","%E1",$word);
-    $word = str_replace("â","%E2",$word);
-    $word = str_replace("ã","%E3",$word);
-    $word = str_replace("ä","%E4",$word);
-    $word = str_replace("å","%E5",$word);
-    $word = str_replace("æ","%E6",$word);
-    $word = str_replace("ç","%E7",$word);
-    $word = str_replace("è","%E8",$word);
-    $word = str_replace("é","%E9",$word);
-    $word = str_replace("ê","%EA",$word);
-    $word = str_replace("ë","%EB",$word);
-    $word = str_replace("ì","%EC",$word);
-    $word = str_replace("í","%ED",$word);
-    $word = str_replace("î","%EE",$word);
-    $word = str_replace("ï","%EF",$word);
-    $word = str_replace("ð","%F0",$word);
-    $word = str_replace("ñ","%F1",$word);
-    $word = str_replace("ò","%F2",$word);
-    $word = str_replace("ó","%F3",$word);
-    $word = str_replace("ô","%F4",$word);
-    $word = str_replace("õ","%F5",$word);
-    $word = str_replace("ö","%F6",$word);
-    $word = str_replace("÷","%F7",$word);
-    $word = str_replace("ø","%F8",$word);
-    $word = str_replace("ù","%F9",$word);
-    $word = str_replace("ú","%FA",$word);
-    $word = str_replace("û","%FB",$word);
-    $word = str_replace("ü","%FC",$word);
-    $word = str_replace("ý","%FD",$word);
-    $word = str_replace("þ","%FE",$word);
-    $word = str_replace("ÿ","%FF",$word);
-    return $word;
+function es($word)
+{
+    return mb_convert_encoding($word, 'ISO-8859-2', 'UTF-8');
 }
-?>

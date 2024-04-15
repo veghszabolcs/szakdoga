@@ -1,3 +1,9 @@
+var today = new Date();
+var formattedDate = today.toISOString().split('T')[0];
+document.getElementById("hataridoInput").min = formattedDate;
+document.getElementById('keszult').value = formattedDate;
+
+
 var maxItems = 10;
 
 function addInput() {
@@ -18,7 +24,7 @@ function addInput() {
         select.name = 'meretegyseg[]';
         select.id = 'meret_egyseg_' + currentItemCount;
 
-        var options = ['Darab', 'Liter', 'Négyzetcentiméter', 'Centiméter', 'Méter'];
+        var options = ['Darab', 'Liter', 'Négyzetméter', 'Centiméter', 'Méter'];
 
         for (var i = 0; i < options.length; i++) {
             var option = document.createElement('option');
@@ -39,7 +45,7 @@ function addInput() {
         input3.type = 'number'; 
         input3.className = 'form-control mb-2'; 
         input3.name = 'tetel_darabara[]'; 
-        input3.placeholder = 'Darabár'; 
+        input3.placeholder = 'Darabár (nettó)'; 
         input3.id = 'tetel_darabara_' + currentItemCount; 
         input3.required = true;
 
@@ -108,13 +114,25 @@ function addService() {
         hourlyRateInput.type = 'number';
         hourlyRateInput.className = 'form-control mb-2';
         hourlyRateInput.name = 'ora_dij[]';
-        hourlyRateInput.placeholder = 'Óradíj';
+        hourlyRateInput.placeholder = 'Óradíj (nettó)';
         hourlyRateInput.id = 'ora_dij_' + currentServiceCount;
         hourlyRateInput.required = true;
 
         var hourlyRateLabel = document.createElement('label');
         hourlyRateLabel.setAttribute('for', hourlyRateInput.id);
         hourlyRateLabel.textContent = 'Óradíj';
+
+        var durationInput = document.createElement('input');
+        durationInput.type = 'number';
+        durationInput.className = 'form-control mb-2';
+        durationInput.name = 'ido_tartam[]';
+        durationInput.placeholder = 'Időtartam (órában)';
+        durationInput.id = 'ido_tartam_' + currentServiceCount;
+        durationInput.required = true;
+
+        var durationLabel = document.createElement('label');
+        durationLabel.setAttribute('for', durationInput.id);
+        durationLabel.textContent = 'Időtartam';
 
         var deleteButton = document.createElement('button');
         deleteButton.textContent = 'Szolgáltatás eltávolítása';
@@ -129,6 +147,8 @@ function addService() {
         div.appendChild(input);
         div.appendChild(hourlyRateLabel);
         div.appendChild(hourlyRateInput);
+        div.appendChild(durationLabel);
+        div.appendChild(durationInput);
         div.appendChild(deleteButton);
 
         servicesInput.appendChild(div);

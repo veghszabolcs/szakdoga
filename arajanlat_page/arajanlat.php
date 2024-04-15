@@ -9,7 +9,7 @@
 </head>
 
 <body>
-
+    
     <h1 id="title">Árajánlat készítése</h1>
     <div id="content">
         <form action="../arajanlat_page/pdf.php" method="post">
@@ -29,18 +29,18 @@
                     if ($resultCeg->num_rows > 0) {
                         while ($row = $resultCeg->fetch_assoc()) {
                             echo "Cég neve: " . $row['nev'] . "<br>";
-                            echo '<input type="hidden" class="form-control" id="companyName" name="company[name]" placeholder="Adja meg a cég nevét" value="'.$row['nev'].'">';
+                            echo '<input type="hidden" class="form-control" id="companyName" name="company[name]" placeholder="Adja meg a cég nevét" value="' . $row['nev'] . '">';
                             echo "Címe: " . $row['szekhely'] . "<br>";
-                            echo '<input type="hidden" class="form-control" id="companyAddress" name="company[address]" placeholder="Adja meg a címet" value="'.$row['szekhely'].'">';
+                            echo '<input type="hidden" class="form-control" id="companyAddress" name="company[address]" placeholder="Adja meg a címet" value="' . $row['szekhely'] . '">';
                             echo "Adószáma: " . $row['adoszam'] . "<br>";
-                            echo '<input type="hidden" class="form-control" id="taxNumber" name="company[taxNumber]" placeholder="Adja meg az adószámot" value="'.$row['adoszam'].'">';
+                            echo '<input type="hidden" class="form-control" id="taxNumber" name="company[taxNumber]" placeholder="Adja meg az adószámot" value="' . $row['adoszam'] . '">';
                             $sqlUser = "SELECT * FROM `user` WHERE `user_id` = $userId;";
                             $resultUser = $db::$conn->query($sqlUser);
                             $rowUser = $resultUser->fetch_assoc();
                             echo "Illetékes neve: " . $rowUser['nev'] . "<br>";
-                            echo '<input type="hidden" class="form-control" id="contactPerson" name="contact[name]" placeholder="Adja meg az illetékes nevét" value="'.$rowUser['nev'].'">';
+                            echo '<input type="hidden" class="form-control" id="contactPerson" name="contact[name]" placeholder="Adja meg az illetékes nevét" value="' . $rowUser['nev'] . '">';
                             echo "Illetékes telefonszáma: +36" . $rowUser['telefon'] . "<br>";
-                            echo '<input type="hidden" class="form-control" id="contactNumber" name="contact[number]" placeholder="Adja meg az illetékes telefonszámát" value="'.$rowUser['telefon'].'">';
+                            echo '<input type="hidden" class="form-control" id="contactNumber" name="contact[number]" placeholder="Adja meg az illetékes telefonszámát" value="' . $rowUser['telefon'] . '">';
                         }
                     } else {
                         echo "<h5>Adja meg adatait itt, vagy a profil szerkesztése menüpontban.</h5>";
@@ -88,10 +88,26 @@
                     <button type="button" class="btn btn-secondary" onclick="addService()">Szolgáltatás hozzáadása</button>
                 </div>
             </div>
+            <hr>
+            <div id="hatarido">
+                <div id="hataridoFirst">
+                    <h1>Határidő: </h1>
+                </div>
+                <div id="hataridoSecond">
+                    <label for="hatarido">Határidő dátuma:</label>
+                    <input type="date" id="keszult" name="keszult" style="display: none;">
+                    <input type="date" id="hataridoInput" name="hatarido" min="" max="2029-12-31" required>
+                </div>
+            </div>
             <button type="submit">mega send</button>
         </form>
     </div>
     <script src="../arajanlat_page/script.js"></script>
+    <?php
+        if(isset($_GET['error'])){
+            echo "<script type='text/javascript'>alert('Legalább egy tételt vagy szolgáltatást meg kell adnia!');</script>";
+        }
+    ?>
 </body>
 
 </html>
