@@ -11,13 +11,14 @@ function addInput() {
         input1.name = 'tetel_nev[]';
         input1.placeholder = 'Tétel neve';
         input1.id = 'tetel_nev_' + currentItemCount;
+        input1.required = true;
 
         var select = document.createElement('select');
         select.className = 'form-control mb-2';
         select.name = 'meretegyseg[]';
         select.id = 'meret_egyseg_' + currentItemCount;
 
-        var options = ['Darab', 'Liter', 'Négyzetcentiméter', 'Centiméter'];
+        var options = ['Darab', 'Liter', 'Négyzetcentiméter', 'Centiméter', 'Méter'];
 
         for (var i = 0; i < options.length; i++) {
             var option = document.createElement('option');
@@ -32,6 +33,15 @@ function addInput() {
         input2.name = 'tetel_mennyiseg[]';
         input2.placeholder = 'Mennyiség';
         input2.id = 'tetel_mennyiseg_' + currentItemCount;
+        input2.required = true;
+
+        var input3 = document.createElement('input'); 
+        input3.type = 'number'; 
+        input3.className = 'form-control mb-2'; 
+        input3.name = 'tetel_darabara[]'; 
+        input3.placeholder = 'Darabár'; 
+        input3.id = 'tetel_darabara_' + currentItemCount; 
+        input3.required = true;
 
         var label1 = document.createElement('label');
         label1.setAttribute('for', input1.id);
@@ -44,6 +54,10 @@ function addInput() {
         var label3 = document.createElement('label');
         label3.setAttribute('for', input2.id);
         label3.textContent = 'Mennyiség';
+
+        var label4 = document.createElement('label'); 
+        label4.setAttribute('for', input3.id); 
+        label4.textContent = 'Darabár'; 
 
         var deleteButton = document.createElement('button');
         deleteButton.textContent = 'Tétel eltávolítása';
@@ -60,6 +74,8 @@ function addInput() {
         div.appendChild(select);
         div.appendChild(label3);
         div.appendChild(input2);
+        div.appendChild(label4); 
+        div.appendChild(input3); 
         div.appendChild(deleteButton);
 
         itemsInput.appendChild(div);
@@ -67,6 +83,7 @@ function addInput() {
         alert('Maximum ' + maxItems + ' tételt adhat hozzá!');
     }
 }
+
 
 var maxServices = 10;
 
@@ -81,10 +98,23 @@ function addService() {
         input.name = 'szolgaltatas_nev[]';
         input.placeholder = 'Szolgáltatás neve';
         input.id = 'szolgaltatas_nev_' + currentServiceCount;
+        input.required = true;
 
         var label = document.createElement('label');
         label.setAttribute('for', input.id);
         label.textContent = 'Szolgáltatás neve';
+
+        var hourlyRateInput = document.createElement('input');
+        hourlyRateInput.type = 'number';
+        hourlyRateInput.className = 'form-control mb-2';
+        hourlyRateInput.name = 'ora_dij[]';
+        hourlyRateInput.placeholder = 'Óradíj';
+        hourlyRateInput.id = 'ora_dij_' + currentServiceCount;
+        hourlyRateInput.required = true;
+
+        var hourlyRateLabel = document.createElement('label');
+        hourlyRateLabel.setAttribute('for', hourlyRateInput.id);
+        hourlyRateLabel.textContent = 'Óradíj';
 
         var deleteButton = document.createElement('button');
         deleteButton.textContent = 'Szolgáltatás eltávolítása';
@@ -97,6 +127,8 @@ function addService() {
         div.className = 'form-group szolgaltatasGroup';
         div.appendChild(label);
         div.appendChild(input);
+        div.appendChild(hourlyRateLabel);
+        div.appendChild(hourlyRateInput);
         div.appendChild(deleteButton);
 
         servicesInput.appendChild(div);

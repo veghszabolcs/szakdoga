@@ -4,20 +4,20 @@ document.addEventListener('DOMContentLoaded', function () {
     var erkezoContent = document.getElementsByClassName('received');
 
     if (event.target.id === 'option1') {
-      // Loop through elements with 'sent' class and change their style
+      
       for (var i = 0; i < kuldottContent.length; i++) {
         kuldottContent[i].style.display = 'block';
       }
-      // Loop through elements with 'received' class and change their style
+      
       for (var j = 0; j < erkezoContent.length; j++) {
         erkezoContent[j].style.display = 'none';
       }
     } else if (event.target.id === 'option2') {
-      // Loop through elements with 'sent' class and change their style
+      
       for (var k = 0; k < kuldottContent.length; k++) {
         kuldottContent[k].style.display = 'none';
       }
-      // Loop through elements with 'received' class and change their style
+      
       for (var l = 0; l < erkezoContent.length; l++) {
         erkezoContent[l].style.display = 'block';
       }
