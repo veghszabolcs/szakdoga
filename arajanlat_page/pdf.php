@@ -28,10 +28,9 @@ if (!(isset($_POST['tetel_nev']) && !empty($_POST['tetel_nev'])) && !(isset($_PO
     header("Location: ../homepage/homepage.php?page=arajanlat_keszites&error=empty");
 }
 
-// Tételek
 $sumTetelek = 0;
 if (isset($_POST['tetel_nev']) && !empty($_POST['tetel_nev'])) {
-    $pdf->Ln(10); // Üres sor hozzáadása
+    $pdf->Ln(10);
     $pdf->SetFont('arial', 'B', 15);
     $pdf->Cell(0, 10, es('Tételek:'), 0, 1);
     $pdf->SetFont('arial', '', 12);
@@ -48,23 +47,21 @@ if (isset($_POST['tetel_nev']) && !empty($_POST['tetel_nev'])) {
     }
 }
 
-// Szolgáltatások
 $sumSzolgaltatasok = 0;
 if (isset($_POST['szolgaltatas_nev']) && !empty($_POST['szolgaltatas_nev'])) {
-    $pdf->Ln(10); // Add an empty line
+    $pdf->Ln(10); 
     $pdf->SetFont('arial', 'B', 15);
-    $pdf->Cell(0, 10, es('Szolgáltatások:'), 0, 1); // Title
+    $pdf->Cell(0, 10, es('Szolgáltatások:'), 0, 1); 
     $pdf->SetFont('arial', '', 12);
 
     $szolgaltatasok = $_POST['szolgaltatas_nev'];
     $idotartamok = $_POST['ido_tartam'];
     $oradijak = $_POST['ora_dij'];
 
-    // Loop through each service
     for ($i = 0; $i < count($szolgaltatasok); $i++) {
-        $pdf->Cell(75, 10, es($szolgaltatasok[$i]), 'B', 0); // Service name
+        $pdf->Cell(75, 10, es($szolgaltatasok[$i]), 'B', 0);
         $pdf->Cell(75, 10, es($idotartamok[$i] . " óra"), 'B', 0);
-        $pdf->Cell(0, 10, es($oradijak[$i]) . es(' forint/óra'), 'B', 1); // Hourly rate
+        $pdf->Cell(0, 10, es($oradijak[$i]) . es(' forint/óra'), 'B', 1);
         $sumSzolgaltatasok += $idotartamok[$i] * $oradijak[$i];
     }
 }
@@ -93,7 +90,6 @@ $pdf->Cell(30, 10, number_format(($sumTetelek + $sumSzolgaltatasok) * (($afa / 1
 // Fájl kimenet
 $pdf->Output();
 
-function es($word)
-{
+function es($word){
     return mb_convert_encoding($word, 'ISO-8859-2', 'UTF-8');
 }
