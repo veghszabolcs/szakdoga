@@ -32,7 +32,7 @@ if(isset($_POST['tetel_nev']) && !empty($_POST['tetel_nev'])) {
     for ($i = 0; $i < count($tetelek); $i++) {
         $pdf->Cell(0, 10, urldecode(em('Tétel neve: ')) . urldecode(em($tetelek[$i])), 0, 1);
         $pdf->Cell(0, 10, urldecode(em('Mennyiség: ')) . urldecode(em($mennyisegek[$i] . ' ' . $meretegysegek[$i])), 0, 1);
-        $pdf->Cell(0, 10, urldecode(em('Darabár: ')) . urldecode(em($darabarak[$i])), 0, 1);
+        $pdf->Cell(0, 10, urldecode(em('Darabár: ')) . urldecode(em($darabarak[$i])). ' forint', 0, 1);
     }
 }
 
@@ -45,7 +45,7 @@ if(isset($_POST['szolgaltatas_nev']) && !empty($_POST['szolgaltatas_nev'])) {
 
     for ($i = 0; $i < count($szolgaltatasok); $i++) {
         $pdf->Cell(0, 10, urldecode(em('Szolgáltatás neve: ')) . urldecode(em($szolgaltatasok[$i])), 0, 1);
-        $pdf->Cell(0, 10, urldecode(em('Óradíj: ')) . urldecode(em($oradijak[$i])), 0, 1);
+        $pdf->Cell(0, 10, urldecode(em('Óradíj: ')) . urldecode(em($oradijak[$i])). ' forint', 0, 1);
     }
 }
 
