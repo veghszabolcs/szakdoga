@@ -64,14 +64,18 @@ require_once "../connector/mysql.php";
         '</div>';
     }
     $empty = true;
-    if (!empty ($resultArajanlatSent)) {
+    if (!empty($resultArajanlatSent)) {
       if ($resultArajanlatSent->num_rows > 0) {
         $empty = false;
         while ($row = $resultArajanlatSent->fetch_assoc()) {
-          $sqlGetUserNev = "SELECT `nev` FROM `user` WHERE `user_id` = " . $row['fogado_id'] . ";";
-          $resultUserNev = $db::$conn->query($sqlGetUserNev);
-          $rowUserNev = $resultUserNev->fetch_assoc();
-          $userNev = $rowUserNev['nev'];
+          if (!empty($row['fogado_id'])) {
+            $sqlGetUserNev = "SELECT `nev` FROM `user` WHERE `user_id` = " . $row['fogado_id'] . ";";
+            $resultUserNev = $db::$conn->query($sqlGetUserNev);
+            $rowUserNev = $resultUserNev->fetch_assoc();
+            $userNev = $rowUserNev['nev'];
+          } else {
+            $userNev = "Nincs címzett";
+          }
 
           echo '<div class="row sent">' .
             '<p class="hidden pdf-id">' . $row['arajanlat_id'] . '</p>' .

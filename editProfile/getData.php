@@ -19,7 +19,7 @@ if ($resultUser->num_rows > 0) {
     echo "Hiba";
 }
 
-//ceg query
+
 $sqlCeg = "SELECT * FROM `ceg` WHERE `user_id` = $userId;";
 
 $resultCeg = $db::$conn->query($sqlCeg);
@@ -28,7 +28,11 @@ if ($resultCeg->num_rows > 0) {
     while ($row = $resultCeg->fetch_assoc()) {
         $cegId = $row["ceg_id"];
         $cegNev = $row["nev"];
-        $telepulesId = $row['telepules_id'];
+        if (!empty($row['telepules_id'])) {
+            $telepulesId = $row['telepules_id'];
+        } else {
+            $telepulesId = 10000;
+        }
         $sqlGetTelepulesId = "SELECT `irsz` FROM `telepules` WHERE `telepules_id` = $telepulesId";
         $resultTelepules = $db::$conn->query($sqlGetTelepulesId);
         if ($resultTelepules->num_rows > 0) {
