@@ -34,14 +34,14 @@ require_once "../connector/mysql.php";
 
         if ($resultArajanlatReceived->num_rows > 0) {
             $empty = false;
+            echo '<div class="row received">';
             while ($row = $resultArajanlatReceived->fetch_assoc()) {
                 $sqlGetCegNev = "SELECT `nev` FROM `ceg` WHERE `ceg_id` = " . $row['kuldo_id'] . ";";
                 $resultCegNev = $db::$conn->query($sqlGetCegNev);
                 $rowCegNev = $resultCegNev->fetch_assoc();
                 $cegNev = $rowCegNev['nev'];
 
-                echo '<div class="row received">' .
-                    '<p class="hidden pdf-id">' . $row['arajanlat_id'] . '</p>' .
+                echo '<p class="hidden pdf-id">' . $row['arajanlat_id'] . '</p>' .
                     '<div class="col-md-4">' .
                     '<div class="history-item">' .
                     '<h3>' . $cegNev . '</h3>' .
@@ -59,10 +59,9 @@ require_once "../connector/mysql.php";
                 }
                 echo '</div>
             </div>
-          </div>
-        </div>';
+          </div>';
             }
-
+            echo '</div>';
         }
         if ($empty === true) {
             echo '<div class="no-events received">' .

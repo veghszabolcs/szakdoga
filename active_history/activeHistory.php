@@ -56,7 +56,6 @@ require_once "../connector/mysql.php";
           </div>
         </div>';
       }
-
     }
     if ($empty === true) {
       echo '<div class="no-events received">' .
@@ -67,6 +66,7 @@ require_once "../connector/mysql.php";
     if (!empty($resultArajanlatSent)) {
       if ($resultArajanlatSent->num_rows > 0) {
         $empty = false;
+        echo '<div class="sent-items-container grid-container">';
         while ($row = $resultArajanlatSent->fetch_assoc()) {
           if (!empty($row['fogado_id'])) {
             $sqlGetUserNev = "SELECT `nev` FROM `user` WHERE `user_id` = " . $row['fogado_id'] . ";";
@@ -77,9 +77,9 @@ require_once "../connector/mysql.php";
             $userNev = "Nincs címzett";
           }
 
-          echo '<div class="row sent">' .
+          echo '<div class="sent">' .
             '<p class="hidden pdf-id">' . $row['arajanlat_id'] . '</p>' .
-            '<div class="col-md-4">' .
+            '<div>' .
             '<div class="history-item">' .
             '<h3>' . $userNev . '</h3>' .
             '<p><strong>Küldési dátum:</strong> ' . $row['keszult'] . '</p>' .
@@ -89,11 +89,12 @@ require_once "../connector/mysql.php";
             '<button id="first" class="btn black-btn btn-action" onclick="viewPdf(' . $row['arajanlat_id'] . ')">Megtekintés</button>
           <button id="second" class="btn black-btn btn-action" onclick="downloadPdf(' . $row['arajanlat_id'] . ')">Letöltés</button>' .
             '</div> <p class="no-change"><em>Nem történt státuszváltozás.</em></p>
-              </div>
+              
             </div>
           </div>
-        </div>';
+          </div>';
         }
+        echo '</div>';
       }
     }
     if ($empty === true) {

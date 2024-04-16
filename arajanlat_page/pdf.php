@@ -1,6 +1,6 @@
 <?php
-require_once ('../fpdf/fpdf.php');
-require_once ('../connector/mysql.php');
+require_once('../fpdf/fpdf.php');
+require_once('../connector/mysql.php');
 
 $db = new DataBase();
 $pdf = new FPDF();
@@ -92,7 +92,7 @@ $adoszam = $_POST['company']['taxNumber'];
 $sqlCeg = "SELECT * FROM `ceg` WHERE `user_id` = $userId;";
 $resultCegCheck = $db::$conn->query($sqlCeg);
 
-if($resultCegCheck->num_rows>0){
+if ($resultCegCheck->num_rows === 0) {
     $sqlCegInsert = "INSERT INTO `ceg` (`nev`, `szekhely`, `adoszam`, `user_id`) VALUES ('$cegNev', '$szekhely', $adoszam, $userId)";
     $db::$conn->query($sqlCegInsert);
 }
@@ -102,13 +102,9 @@ if ($resultCeg->num_rows > 0) {
     while ($row = $resultCeg->fetch_assoc()) {
         $cegId = $row['ceg_id'];
     }
-}else{
+} else {
     echo "Hiba";
 }
-
-
-
-
 
 $sql = "INSERT INTO `arajanlat` (`kuldo_id`, `keszult`, `hatarido`)  VALUES ('$cegId','$keszult','$hatarido')";
 $stmt = $db::$conn->prepare($sql);
@@ -117,20 +113,21 @@ if ($stmt->execute()) {
     $sql = "SELECT MAX(`arajanlat_id`) AS 'arajanlat_id' FROM `arajanlat`;";
     $result = $db::$conn->query($sql);
     if ($result->num_rows > 0) {
-        
+
         while ($row = $result->fetch_assoc()) {
             $arajanlatId = $row['arajanlat_id'];
         }
-        $filePath = '../arajanlatok/'.$arajanlatId.'.pdf';
-        $pdf->Output($filePath,'F');
+        $filePath = '../arajanlatok/' . $arajanlatId . '.pdf';
+        $pdf->Output($filePath, 'F');
         header("Location: ../homepage/homepage.php?page=arajanlat_keszites&success=done&id=$arajanlatId");
-    }else{
+    } else {
         echo "Hiba";
     }
 } else {
     echo "Hiba: " . $stmt->error;
 }
 
-function es($word){
+function es($word)
+{
     return mb_convert_encoding($word, 'ISO-8859-2', 'UTF-8');
 }
