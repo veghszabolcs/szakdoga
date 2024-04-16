@@ -88,10 +88,15 @@ $userId = $_SESSION['user_id'];
 $cegNev = $_POST['company']['name'];
 $szekhely = $_POST['company']['address'];
 $adoszam = $_POST['company']['taxNumber'];
-$sqlCegInsert = "INSERT INTO `ceg` (`nev`, `szekhely`, `adoszam`, `user_id`) VALUES ('$cegNev', '$szekhely', $adoszam, $userId)";
-$db::$conn->query($sqlCegInsert);
 
 $sqlCeg = "SELECT * FROM `ceg` WHERE `user_id` = $userId;";
+$resultCegCheck = $db::$conn->query($sqlCeg);
+
+if($resultCegCheck->num_rows>0){
+    $sqlCegInsert = "INSERT INTO `ceg` (`nev`, `szekhely`, `adoszam`, `user_id`) VALUES ('$cegNev', '$szekhely', $adoszam, $userId)";
+    $db::$conn->query($sqlCegInsert);
+}
+
 $resultCeg = $db::$conn->query($sqlCeg);
 if ($resultCeg->num_rows > 0) {
     while ($row = $resultCeg->fetch_assoc()) {
