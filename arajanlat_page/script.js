@@ -40,6 +40,7 @@ function addInput() {
         input2.placeholder = 'Mennyiség';
         input2.id = 'tetel_mennyiseg_' + currentItemCount;
         input2.required = true;
+        input2.min = 1;
 
         var input3 = document.createElement('input'); 
         input3.type = 'number'; 
@@ -48,6 +49,7 @@ function addInput() {
         input3.placeholder = 'Darabár (nettó)'; 
         input3.id = 'tetel_darabara_' + currentItemCount; 
         input3.required = true;
+        input3.min = 1;
 
         var label1 = document.createElement('label');
         label1.setAttribute('for', input1.id);
@@ -117,6 +119,7 @@ function addService() {
         hourlyRateInput.placeholder = 'Óradíj (nettó)';
         hourlyRateInput.id = 'ora_dij_' + currentServiceCount;
         hourlyRateInput.required = true;
+        hourlyRateInput.min = 1;
 
         var hourlyRateLabel = document.createElement('label');
         hourlyRateLabel.setAttribute('for', hourlyRateInput.id);
@@ -129,6 +132,7 @@ function addService() {
         durationInput.placeholder = 'Időtartam (órában)';
         durationInput.id = 'ido_tartam_' + currentServiceCount;
         durationInput.required = true;
+        durationInput.min = 1;
 
         var durationLabel = document.createElement('label');
         durationLabel.setAttribute('for', durationInput.id);

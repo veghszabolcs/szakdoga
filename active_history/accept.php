@@ -7,7 +7,7 @@ $db = new DataBase();
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset ($_POST['arajanlat_id'])) {
     $arajanlat_id = $_POST['arajanlat_id'];
     $fogadoId = $_SESSION['user_id'];
-    $sql = "UPDATE `arajanlat` SET `statusz`= 1,`statuszvaltozasi_datum`= now() WHERE `fogado_id`= $fogadoId";
+    $sql = "UPDATE `arajanlat` SET `statusz`= 1,`statuszvaltozasi_datum`= now() WHERE `fogado_id`= $fogadoId AND `arajanlat_id`= $arajanlat_id";
 
     $stmt = $db::$conn->prepare($sql);
 

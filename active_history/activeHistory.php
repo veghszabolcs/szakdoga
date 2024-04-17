@@ -37,9 +37,9 @@ require_once "../connector/mysql.php";
         $rowCegNev = $resultCegNev->fetch_assoc();
         $cegNev = $rowCegNev['nev'];
 
-        echo '<div class="row received">' .
+        echo '<div class="received">' .
           '<p class="hidden pdf-id">' . $row['arajanlat_id'] . '</p>' .
-          '<div class="col-md-4">' .
+          '<div class="">' .
           '<div class="history-item">' .
           '<h3>' . $cegNev . '</h3>' .
           '<p><strong>Küldési dátum:</strong> ' . $row['keszult'] . '</p>' .
@@ -66,7 +66,7 @@ require_once "../connector/mysql.php";
     if (!empty($resultArajanlatSent)) {
       if ($resultArajanlatSent->num_rows > 0) {
         $empty = false;
-        echo '<div class="sent-items-container grid-container">';
+        echo '<div class="sent-items-container">';
         while ($row = $resultArajanlatSent->fetch_assoc()) {
           if (!empty($row['fogado_id'])) {
             $sqlGetUserNev = "SELECT `nev` FROM `user` WHERE `user_id` = " . $row['fogado_id'] . ";";

@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function () {
     if (event.target.id === 'option1') {
       
       for (var i = 0; i < kuldottContent.length; i++) {
-        kuldottContent[i].style.display = 'block';
+        kuldottContent[i].style.display = 'grid';
       }
       
       for (var j = 0; j < erkezoContent.length; j++) {
@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function () {
       }
       
       for (var l = 0; l < erkezoContent.length; l++) {
-        erkezoContent[l].style.display = 'block';
+        erkezoContent[l].style.display = 'grid';
       }
     }
   });

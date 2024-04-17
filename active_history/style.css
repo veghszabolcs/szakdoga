@@ -2,15 +2,7 @@
     margin-top: 30px;
 }
 
-.sent-items-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
-    grid-gap: 10px; 
-}
-
 .history-item {
-    width: 100%; 
-    max-width: 300px; 
     background-color: #f9f9f9;
     border: 1px solid #ddd;
     padding: 15px;
@@ -20,26 +12,14 @@
 
 .sent{
     display: none;
-    width: 100%; 
-    max-width: 300px;
 }
 
-#radio-buttons {
-    margin-bottom: 15px;
-}
-
-.hidden {
+.hidden{
     display: none;
 }
 
 .history-item h3 {
     margin-top: 0;
-}
-
-.no-change{
-    margin-bottom: 0px;
-    margin-top: 10px;
-    text-align: center;
 }
 
 .no-events {
@@ -57,25 +37,25 @@
     color: white;
 }
 
-#first {
+#first{
     border-top-right-radius: 0px;
     border-bottom-left-radius: 0px;
     border-bottom-right-radius: 0px;
 }
 
-#second {
+#second{
     border-top-left-radius: 0px;
     border-bottom-left-radius: 0px;
     border-bottom-right-radius: 0px;
 }
 
-#third {
+#third{
     border-top-right-radius: 0px;
     border-top-left-radius: 0px;
     border-bottom-right-radius: 0px;
 }
 
-#fourth {
+#fourth{
     border-top-right-radius: 0px;
     border-top-left-radius: 0px;
     border-bottom-left-radius: 0px;

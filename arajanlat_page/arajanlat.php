@@ -76,26 +76,25 @@
                         echo "<h5>Adja meg adatait itt, vagy a profil szerkesztése menüpontban.</h5>";
                         echo '<div class="form-group">
                         <label for="companyName">Cég neve:</label>
-                        <input type="text" class="form-control" id="companyName" name="company[name]" placeholder="Adja meg a cég nevét" required>
+                        <input type="text" class="form-control" id="companyName" maxlength="30" name="company[name]" placeholder="Adja meg a cég nevét" required>
                     </div>
                     <div class="form-group">
                         <label for="companyAddress">Cím:</label>
-                        <input type="text" class="form-control" id="companyAddress" name="company[address]" placeholder="Adja meg a címet" required>
+                        <input type="text" class="form-control" id="companyAddress" maxlength="30" name="company[address]" placeholder="Adja meg a címet" required>
                     </div>
                     <div class="form-group">
                         <label for="taxNumber">Adószám:</label>
-                        <input type="number" class="form-control" id="taxNumber" name="company[taxNumber]" placeholder="Adja meg az adószámot" required>
+                        <input type="text" class="form-control" id="taxNumber" pattern="[0-9]*" maxlength="10" minlength="10" name="company[taxNumber]" placeholder="Adja meg az adószámot" required>
                     </div>
                     <div class="form-group">
                         <label for="contactPerson">Illetékes neve:</label>
-                        <input type="text" class="form-control" id="contactPerson" name="contact[name]" placeholder="Adja meg az illetékes nevét" required>
+                        <input type="text" class="form-control" id="contactPerson" maxlength="30" name="contact[name]" placeholder="Adja meg az illetékes nevét" required>
                     </div>
                     <label for="contactNumber">Illetékes telefonszáma:</label><br>
                     <div class="form-group">
                         <div class="input-group mb-3">
-                        
                         <div class="phone-prefix">+36</div>
-                        <input type="tel" class="form-control" id="contactNumber" maxlength="12" minlength="11" name="contact[number]" placeholder="Adja meg az illetékes telefonszámát" value="" required>
+                        <input type="text" class="form-control" id="contactNumber" pattern="[0-9]*" maxlength="9" minlength="9" name="contact[number]" placeholder="Adja meg az illetékes telefonszámát" value="" required>
                         </div>
                     </div>';
                         

@@ -42,7 +42,7 @@ require_once "../connector/mysql.php";
                 $cegNev = $rowCegNev['nev'];
 
                 echo '<p class="hidden pdf-id">' . $row['arajanlat_id'] . '</p>' .
-                    '<div class="col-md-4">' .
+                    '<div class="">' .
                     '<div class="history-item">' .
                     '<h3>' . $cegNev . '</h3>' .
                     '<p><strong>Küldési dátum:</strong> ' . $row['keszult'] . '</p>' .
@@ -69,7 +69,7 @@ require_once "../connector/mysql.php";
                 '</div>';
         }
         $empty = true;
-        if (!empty ($resultArajanlatSent)) {
+        if (!empty($resultArajanlatSent)) {
             if ($resultArajanlatSent->num_rows > 0) {
                 $empty = false;
                 while ($row = $resultArajanlatSent->fetch_assoc()) {
@@ -78,9 +78,9 @@ require_once "../connector/mysql.php";
                     $rowUserNev = $resultUserNev->fetch_assoc();
                     $userNev = $rowUserNev['nev'];
 
-                    echo '<div class="row sent">' .
+                    echo '<div class="sent">' .
                         '<p class="hidden pdf-id">' . $row['arajanlat_id'] . '</p>' .
-                        '<div class="col-md-4">' .
+                        '<div class="">' .
                         '<div class="history-item">' .
                         '<h3>' . $userNev . '</h3>' .
                         '<p><strong>Küldési dátum:</strong> ' . $row['keszult'] . '</p>' .

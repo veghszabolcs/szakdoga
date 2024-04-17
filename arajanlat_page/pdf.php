@@ -23,8 +23,9 @@ $pdf->Cell(0, 10, es('Illetékes neve: ') . es($_POST['contact']['name']), 0, 1)
 $pdf->Cell(25);
 $pdf->Cell(0, 10, es('Illetékes telefonszáma: +36') . es($_POST['contact']['number']), 0, 1);
 
-if (!(isset($_POST['tetel_nev']) && !empty($_POST['tetel_nev'])) && !(isset($_POST['szolgaltatas_nev']) && !empty($_POST['szolgaltatas_nev']))) {
+if (!isset($_POST['tetel_nev']) && !isset($_POST['szolgaltatas_nev'])) {
     header("Location: ../homepage/homepage.php?page=arajanlat_keszites&error=empty");
+    exit();
 }
 
 $sumTetelek = 0;
